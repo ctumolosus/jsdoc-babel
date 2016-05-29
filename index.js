@@ -7,9 +7,7 @@ var defaults = {
     extensions: ['js']
 };
 
-var options = _.assign(defaults, global.env.conf.babel);
-
-function shouldProcessFile (filename) {
+function shouldProcessFile (filename, options) {
     var extensions = options.extensions;
     var parts = filename.split('.');
 
@@ -20,7 +18,7 @@ function shouldProcessFile (filename) {
     }
 }
 
-function process (source) {
+function process (source, options) {
     var result = babel.transform(source, _.omit(options, 'extensions'));
     return result.code;
 }
@@ -28,8 +26,10 @@ function process (source) {
 exports.handlers = {
 
     beforeParse: function (event) {
-        if (shouldProcessFile(event.filename)) {
-            event.source = process(event.source);
+        var options = _.assign(defaults, _.get(global, 'env.conf.babel'));
+
+        if (shouldProcessFile(event.filename, options)) {
+            event.source = process(event.source, options);
         }
     }
 };
