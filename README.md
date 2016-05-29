@@ -1,4 +1,4 @@
-A JSDoc plugin that transforms ES6 source files with Babel before they are processsed.
+A JSDoc plugin that transforms ES6 source files with Babel 6 before they are processed.
 
 ## Installation
 
@@ -39,7 +39,7 @@ You can define [options](http://babeljs.io/docs/usage/options/) to be passed thr
 {
     "plugins": ["node_modules/jsdoc-babel"],
     "babel": {
-        "optional": ["runtime"]
+        "presets": ["es2015"]
     }
 }
 ```

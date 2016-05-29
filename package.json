@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "A JSDoc plugin that transforms ES6 source files with Babel before they are processsed.",
   "main": "lib/index.js",
-  "files": ["lib", "src"],
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "build": "babel src --out-dir lib",
     "prebuild": "npm run test",
@@ -26,8 +29,8 @@
   },
   "homepage": "https://github.com/ctumolosus/jsdoc-babel",
   "dependencies": {
-    "babel-core": "^5.6.15",
-    "lodash": "^3.9.3"
+    "babel-core": "^6.9.0",
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

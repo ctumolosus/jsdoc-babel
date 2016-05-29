@@ -13,7 +13,7 @@ describe('babel parser', function () {
 
   _.set(global, 'env.conf.babel', {
     extensions: ['js', 'jsx'],
-    optional: ['runtime']
+    presets: ['es2015']
   });
 
   beforeEach(function () {
@@ -27,7 +27,7 @@ describe('babel parser', function () {
   it('should transpile source code', () => {
     var event = { source: source, filename: '/path/to/file.js' };
     plugin.handlers.beforeParse(event);
-    expect(event.source).to.equal(babel.transform(source).code);
+    expect(event.source).to.equal(babel.transform(source, { presets: ['es2015'] }).code);
   });
 
   it('should not transpile files that do not match configured extensions', function () {
@@ -41,7 +41,7 @@ describe('babel parser', function () {
     var event = { source: source, filename: '/path/to/file.jsx' };
     plugin.handlers.beforeParse(event);
     expect(babel.transform).to.have.been.calledOnce;
-    expect(babel.transform).to.have.been.calledWithExactly(source, { optional: ['runtime'] });
+    expect(babel.transform).to.have.been.calledWithExactly(source, { presets: ['es2015'] });
   });
 
 });
