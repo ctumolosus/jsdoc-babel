@@ -1,5 +1,6 @@
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
 
 # jsdoc-babel
 
@@ -53,3 +54,5 @@ You can define [options](http://babeljs.io/docs/usage/options/) to be passed thr
 [npm-url]: https://www.npmjs.com/package/jsdoc-babel
 [travis-image]: https://img.shields.io/travis/ctumolosus/jsdoc-babel/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/ctumolosus/jsdoc-babel
+[downloads-image]: https://img.shields.io/npm/dm/jsdoc-babel.svg?style=flat-square
+[downloads-url]: https://www.npmjs.com/package/jsdoc-babel
