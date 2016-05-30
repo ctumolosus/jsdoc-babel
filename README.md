@@ -1,4 +1,6 @@
-A JSDoc plugin that transforms ES6 source files with Babel 6 before they are processed.
+# jsdoc-babel [![Build Status](https://travis-ci.org/ctumolosus/jsdoc-babel.svg?branch=master)](https://travis-ci.org/ctumolosus/jsdoc-babel)
+
+A JSDOC plugin that transforms source files with Babel 6 before they are processed.
 
 ## Installation
 
