@@ -1,6 +1,9 @@
-# jsdoc-babel [![Build Status](https://travis-ci.org/ctumolosus/jsdoc-babel.svg?branch=master)](https://travis-ci.org/ctumolosus/jsdoc-babel)
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 
-A JSDOC plugin that transforms source files with Babel 6 before they are processed.
+# jsdoc-babel
+
+A JSDoc plugin that transforms source files with Babel 6 before they are processed.
 
 ## Installation
 
@@ -45,3 +48,8 @@ You can define [options](http://babeljs.io/docs/usage/options/) to be passed thr
     }
 }
 ```
+
+[npm-image]: https://img.shields.io/npm/v/jsdoc-babel.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/jsdoc-babel
+[travis-image]: https://img.shields.io/travis/ctumolosus/jsdoc-babel/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/ctumolosus/jsdoc-babel
