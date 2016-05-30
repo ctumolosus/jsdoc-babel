@@ -1,0 +1,13 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "chai": true,
+    "expect": true,
+    "sinon": true
+  },
+  "rules": {
+    "no-unused-expressions": 0
+  }
+}
