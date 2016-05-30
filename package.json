@@ -13,7 +13,7 @@
     "prebuild": "npm run test",
     "prepublish": "npm run build",
     "pretest": "npm run lint",
-    "test": "mocha --recursive --require test/setup.js test/specs"
+    "test": "mocha --compilers js:babel-core/register --recursive --require test/setup.js test/specs"
   },
   "repository": {
     "type": "git",
