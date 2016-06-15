@@ -30,7 +30,7 @@
     "url": "https://github.com/ctumolosus/jsdoc-babel/issues"
   },
   "homepage": "https://github.com/ctumolosus/jsdoc-babel",
-  "dependencies": {
+  "peerDependencies": {
     "babel-core": "^6.9.0",
     "lodash": "^4.13.1"
   },
