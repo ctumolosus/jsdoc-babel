@@ -1,0 +1,23 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "A couple annotated files to test jsdoc-babel plugin",
+  "main": "index.js",
+  "scripts": {
+    "clean:docs": "rm -rf docs",
+    "docs": "jsdoc -c conf.json -d docs",
+    "predocs": "npm run clean:docs",
+    "preserve:docs": "npm run docs",
+    "serve:docs": "http-server -o -p 9000 -c-1 ./docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "http-server": "^0.9.0",
+    "jsdoc": "^3.4.0",
+    "jsdoc-babel": "^0.2.1"
+  }
+}
