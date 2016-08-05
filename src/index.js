@@ -11,6 +11,7 @@ function process(source, options) {
   return transform(source, omit(options, 'extensions')).code;
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export const handlers = {
   beforeParse: (event) => {
     const options = assign(defaults, get(global, 'env.conf.babel'));
