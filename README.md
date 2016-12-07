@@ -16,7 +16,8 @@ npm install jsdoc-babel --save-dev
 
 ## Usage
 
-To use plugin you should include the plugin module in the `plugins` array of [JSDoc's configuration file](http://usejsdoc.org/about-configuring-jsdoc.html).
+To use plugin you should include the plugin module in the `plugins` array of
+[JSDoc's configuration file](http://usejsdoc.org/about-configuring-jsdoc.html).
 
 ```json
 {
@@ -26,7 +27,9 @@ To use plugin you should include the plugin module in the `plugins` array of [JS
 
 ### Processing files with different extensions
 
-By default, the plugin only processes files that have a `.js` extension. You could enable transformation for other file extensions by adding the following settings to your JSDoc configuration file:
+By default, the plugin only processes files that have a `.js` extension. You
+could enable transformation for other file extensions by adding the following
+settings to your JSDoc configuration file:
 
 ```json
 {
@@ -39,7 +42,11 @@ By default, the plugin only processes files that have a `.js` extension. You cou
 
 ### Passing options through Babel
 
-You can define [options](http://babeljs.io/docs/usage/options/) to be passed through Babel by adding them to your JSDoc configuration file:
+If Babel can resolve a `.babelrc` file in your project, it will be parsed as the
+transformer options.
+
+Alternatively, you can define [options](https://babeljs.io/docs/usage/api/#options)
+to be passed through Babel by adding them to your JSDoc configuration file:
 
 ```json
 {
@@ -49,6 +56,16 @@ You can define [options](http://babeljs.io/docs/usage/options/) to be passed thr
     }
 }
 ```
+
+Note that options defined in the JSDoc configuration file will take precedence
+over those defined in your `.babelrc` file.
+
+If you would prefer to disable `.babelrc` file resolution, you can use the
+`babelrc` option (e.g. `{ "babelrc": false }`).
+
+## License
+
+MIT
 
 [npm-image]: https://img.shields.io/npm/v/jsdoc-babel.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/jsdoc-babel
