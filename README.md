@@ -61,7 +61,17 @@ Note that options defined in the JSDoc configuration file will take precedence
 over those defined in your `.babelrc` file.
 
 If you would prefer to disable `.babelrc` file resolution, you can use the
-`babelrc` option (e.g. `{ "babelrc": false }`).
+`babelrc` option:
+
+```json
+{
+    "plugins": ["node_modules/jsdoc-babel"],
+    "babel": {
+        "presets": ["es2015"],
+        "babelrc": false
+    }
+}
+```
 
 ## License
 
