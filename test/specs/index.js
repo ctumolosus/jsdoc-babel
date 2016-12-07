@@ -5,14 +5,18 @@ import { handlers } from '../../src/index';
 describe('babel parser', () => {
   const sandbox = sinon.sandbox.create();
   const source = 'const { attribute } = object;';
+  const transpiled = '"use strict"; var _object = object, attribute = _object.attribute;';
 
   set(global, 'env.conf.babel', {
     extensions: ['js', 'jsx'],
     presets: ['es2015'],
+    plugins: ['transform-runtime'],
   });
 
   beforeEach(() => {
-    sandbox.spy(babel, 'transform');
+    sandbox.stub(babel, 'transform')
+    .withArgs(source, sinon.match.object)
+    .returns({ code: transpiled });
   });
 
   afterEach(() => {
@@ -21,8 +25,8 @@ describe('babel parser', () => {
 
   it('should transpile source code', () => {
     const event = { source, filename: '/path/to/file.js' };
-    const transpiled = babel.transform(source, { presets: ['es2015'] }).code;
     handlers.beforeParse(event);
+    expect(babel.transform).to.have.been.calledOnce;
     expect(event.source).to.equal(transpiled);
   });
 
@@ -33,10 +37,31 @@ describe('babel parser', () => {
     expect(event.source).to.equal(source); // not transpiled
   });
 
-  it('should pass options to babel transformer without extensions', () => {
+  it('should not pass extensions to babel transformer', () => {
     const event = { source, filename: '/path/to/file.jsx' };
     handlers.beforeParse(event);
     expect(babel.transform).to.have.been.calledOnce;
-    expect(babel.transform).to.have.been.calledWithExactly(source, { presets: ['es2015'] });
+    expect(babel.transform).to.not.have.been.calledWith(source, sinon.match({
+      extensions: ['js', 'jsx'],
+    }));
+  });
+
+  it('should pass other options to babel transformer', () => {
+    const event = { source, filename: '/path/to/file.jsx' };
+    handlers.beforeParse(event);
+    expect(babel.transform).to.have.been.calledOnce;
+    expect(babel.transform).to.have.been.calledWith(source, sinon.match({
+      presets: ['es2015'],
+      plugins: ['transform-runtime'],
+    }));
+  });
+
+  it('should pass file name to babel transformer', () => {
+    const event = { source, filename: '/path/to/file.jsx' };
+    handlers.beforeParse(event);
+    expect(babel.transform).to.have.been.calledOnce;
+    expect(babel.transform).to.have.been.calledWithExactly(source, sinon.match({
+      filename: event.filename,
+    }));
   });
 });
