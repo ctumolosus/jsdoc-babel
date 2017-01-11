@@ -6,3 +6,6 @@ cache:
     - node_modules
 scripts:
   - npm test
+branches:
+  only:
+  - master
