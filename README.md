@@ -4,6 +4,8 @@
 
 # jsdoc-babel
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ctumolosus/jsdoc-babel.svg)](https://greenkeeper.io/)
+
 A JSDoc plugin that transforms source files with Babel 6 before they are processed.
 
 ## Installation
