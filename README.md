@@ -1,10 +1,9 @@
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads][downloads-image]][downloads-url]
+[![Greenkeeper badge](https://badges.greenkeeper.io/ctumolosus/jsdoc-babel.svg)](https://greenkeeper.io/)
 
 # jsdoc-babel
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/ctumolosus/jsdoc-babel.svg)](https://greenkeeper.io/)
 
 A JSDoc plugin that transforms source files with Babel 6 before they are processed.
 
