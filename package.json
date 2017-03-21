@@ -49,6 +49,6 @@
     "eslint-plugin-react": "6.10.0",
     "mocha": "3.2.0",
     "sinon": "1.17.7",
-    "sinon-chai": "2.8.0"
+    "sinon-chai": "2.9.0"
   }
 }
