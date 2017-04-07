@@ -34,7 +34,7 @@
     "lodash": "^4.13.1"
   },
   "peerDependencies": {
-    "babel-core": ">6.0.0"
+    "babel-core": ">=6.24.1"
   },
   "devDependencies": {
     "babel-cli": "6.24.0",
