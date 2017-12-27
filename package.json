@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-babel",
-  "version": "0.3.0",
+  "version": "0.4.0-alpha.0",
   "description": "A JSDoc plugin that transforms ES6 source files with Babel before they are processsed.",
   "main": "lib/index.js",
   "files": [
