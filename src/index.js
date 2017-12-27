@@ -1,5 +1,5 @@
 import { assign, includes, get, last, omit } from 'lodash';
-import { transform } from 'babel-core';
+import { transform } from '@babel/core';
 
 const defaults = { extensions: ['js'] };
 

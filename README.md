@@ -55,7 +55,7 @@ to be passed through Babel by adding them to your JSDoc configuration file:
 {
     "plugins": ["node_modules/jsdoc-babel"],
     "babel": {
-        "presets": ["es2015"]
+        "presets": ["@babel/es2015"]
     }
 }
 ```
@@ -70,7 +70,7 @@ If you would prefer to disable `.babelrc` file resolution, you can use the
 {
     "plugins": ["node_modules/jsdoc-babel"],
     "babel": {
-        "presets": ["es2015"],
+        "presets": ["@babel/es2015"],
         "babelrc": false
     }
 }

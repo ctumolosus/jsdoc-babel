@@ -14,10 +14,10 @@
   "author": "Christian Munoz",
   "license": "MIT",
   "dependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-react": "^7.0.0-beta.36",
     "http-server": "^0.10.0",
     "jsdoc": "^3.5.5",
-    "jsdoc-babel": "^0.3.0"
+    "jsdoc-babel": "^0.4.0-alpha.1"
   }
 }
