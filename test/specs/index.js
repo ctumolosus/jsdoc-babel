@@ -1,5 +1,5 @@
 import { set } from 'lodash';
-import * as babel from 'babel-core';
+import * as babel from '@babel/core';
 import { handlers } from '../../src/index';
 
 describe('babel parser', () => {
