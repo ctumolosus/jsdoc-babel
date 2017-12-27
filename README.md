@@ -5,7 +5,9 @@
 
 # jsdoc-babel
 
-A JSDoc plugin that transforms source files with Babel 6 before they are processed.
+A [JSDoc][jsdoc] plugin that transforms source files with [Babel][babel] before they are processed.
+
+> JSDoc uses the Babylon JavaScript parser since [version 3.5.0](https://github.com/jsdoc3/jsdoc/releases/tag/3.5.0), which means that JSDoc can parse any JavaScript or JSX file that is supported by the Babel compiler. You may not need to use this plugin unless you need to preprocess unsupported syntax in your source code.
 
 ## Installation
 
@@ -84,3 +86,5 @@ MIT
 [travis-url]: https://travis-ci.org/ctumolosus/jsdoc-babel
 [downloads-image]: https://img.shields.io/npm/dm/jsdoc-babel.svg?style=flat-square
 [downloads-url]: https://www.npmjs.com/package/jsdoc-babel
+[jsdoc]: http://usejsdoc.org/
+[babel]: https://babeljs.io/
