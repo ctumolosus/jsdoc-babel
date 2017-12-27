@@ -15,8 +15,8 @@ describe('babel parser', () => {
 
   beforeEach(() => {
     sandbox.stub(babel, 'transform')
-    .withArgs(source, sinon.match.object)
-    .returns({ code: transpiled });
+      .withArgs(source, sinon.match.object)
+      .returns({ code: transpiled });
   });
 
   afterEach(() => {
