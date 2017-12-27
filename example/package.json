@@ -19,6 +19,6 @@
     "@babel/preset-react": "^7.0.0-beta.36",
     "http-server": "^0.10.0",
     "jsdoc": "^3.5.5",
-    "jsdoc-babel": "^0.4.0-alpha.1"
+    "jsdoc-babel": "^0.4.0-alpha.0"
   }
 }
