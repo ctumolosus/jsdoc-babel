@@ -52,7 +52,6 @@ export const handlers = {
       // eslint-disable-next-line no-param-reassign
       event.source = processFile(event.source, options, doclets);
     }
-    console.log(doclets);
   },
   newDoclet: (e) => {
     if (e) {
