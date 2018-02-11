@@ -8,6 +8,7 @@
     "src"
   ],
   "scripts": {
+    "prepare": "babel src --out-dir lib",
     "build": "babel src --out-dir lib",
     "lint": "eslint src test",
     "prebuild": "npm run test",
