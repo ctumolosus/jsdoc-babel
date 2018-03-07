@@ -5,6 +5,16 @@ import React from 'react';
  * @extends {React.Component}
  */
 class TimerExample extends React.Component {
+    /**
+     * The displayName string is used in debugging messages. Usually, you don’t
+     * need to set it explicitly because it’s inferred from the name of the
+     * function or class that defines the component. You might want to set it
+     * explicitly if you want to display a different name for debugging
+     * purposes or when you create a higher-order component.
+     * @static
+     * @name TimerExample.displayName
+     */
+    static displayName = 'TimerExample';
 
     constructor(props) {
         super(props);
@@ -14,8 +24,7 @@ class TimerExample extends React.Component {
     /**
      * Called by React when the component has been rendered on the page. We can
      * set the interval here.
-     * @memberOf TimerExample.prototype
-     * @method componentDidMount
+     * @method TimerExample.prototype.componentDidMount
      */
     componentDidMount() {
         this.timer = setInterval(this.tick, 50);
@@ -24,8 +33,7 @@ class TimerExample extends React.Component {
     /**
      * Called immediately before the component is removed from the page and
      * destroyed. We can clear the interval here.
-     * @memberOf TimerExample.prototype
-     * @method componentWillUnmount
+     * @method TimerExample.prototype.componentWillUnmount
      */
     componentWillUnmount() {
         clearInterval(this.timer);
@@ -34,8 +42,7 @@ class TimerExample extends React.Component {
     /**
      * Called every 50 ms to update the elapsed counter. Calling setState causes
      * the component to be re-rendered.
-     * @memberOf TimerExample.prototype
-     * @method tick
+     * @method TimerExample.prototype.tick
      */
     tick() {
         this.setState({elapsed: new Date() - this.props.start});
