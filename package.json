@@ -52,6 +52,6 @@
     "eslint-plugin-react": "^7.5.1",
     "mocha": "^5.0.0",
     "sinon": "^4.1.3",
-    "sinon-chai": "^2.14.0"
+    "sinon-chai": "^3.0.0"
   }
 }
