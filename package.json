@@ -10,10 +10,11 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rimraf lib",
-    "lint": "eslint src test",
+    "lint": "eslint .",
     "prepare": "npm-run-all clean build",
     "prepublishOnly": "npm-run-all clean lint test build",
-    "test": "mocha --recursive --require @babel/register --require test/setup.js test/specs"
+    "test": "mocha --recursive --require @babel/register --require test/setup.js test/specs",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "chai": "^4.1.2",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",

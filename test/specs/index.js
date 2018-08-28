@@ -1,67 +1,74 @@
-import { set } from 'lodash';
-import * as babel from '@babel/core';
+import fs from 'fs';
+import set from 'lodash/set';
+
 import { handlers } from '../../src/index';
+import * as transformFile from '../../src/transformFile';
 
-describe('babel parser', () => {
-  const sandbox = sinon.sandbox.create();
-  const source = 'const { attribute } = object;';
-  const transpiled = '"use strict"; var _object = object, attribute = _object.attribute;';
-
-  set(global, 'env.conf.babel', {
-    extensions: ['js', 'jsx'],
-    presets: ['es2015'],
-    plugins: ['transform-runtime'],
-  });
-
-  beforeEach(() => {
-    sandbox.stub(babel, 'transform')
-      .withArgs(source, sinon.match.object)
-      .returns({ code: transpiled });
+describe('beforeParse', () => {
+  before(() => {
+    set(global, 'env.conf.babel', {
+      extensions: ['js', 'jsx'],
+      presets: ['@babel/env'],
+    });
   });
 
   afterEach(() => {
-    sandbox.restore();
+    sinon.restore();
+  });
+
+  after(() => {
+    delete global.env.conf.babel;
   });
 
   it('should transpile source code', () => {
-    const event = { source, filename: '/path/to/file.js' };
+    const filename = './test/fixtures/async.js';
+    const source = fs.readFileSync(filename, 'utf8');
+    const event = { source, filename };
     handlers.beforeParse(event);
-    expect(babel.transform).to.have.been.calledOnce;
-    expect(event.source).to.equal(transpiled);
+    expect(event.source).to.not.equal(source);
   });
 
   it('should not transpile files that do not match configured extensions', () => {
-    const event = { source, filename: '/path/to/file.ufo' };
+    const filename = './test/fixtures/async.html';
+    const source = fs.readFileSync('./test/fixtures/async.js', 'utf8');
+    const event = { source, filename };
     handlers.beforeParse(event);
-    expect(babel.transform).to.not.have.been.called;
-    expect(event.source).to.equal(source); // not transpiled
+    expect(event.source).to.equal(source);
   });
 
   it('should not pass extensions to babel transformer', () => {
-    const event = { source, filename: '/path/to/file.jsx' };
+    const filename = './test/fixtures/async.js';
+    const source = fs.readFileSync(filename, 'utf8');
+    const event = { source, filename };
+    const spy = sinon.spy(transformFile, 'default');
     handlers.beforeParse(event);
-    expect(babel.transform).to.have.been.calledOnce;
-    expect(babel.transform).to.not.have.been.calledWith(source, sinon.match({
+    expect(spy).to.have.been.calledOnce;
+    expect(spy).to.not.have.been.calledWithExactly(source, sinon.match({
       extensions: ['js', 'jsx'],
     }));
   });
 
   it('should pass other options to babel transformer', () => {
-    const event = { source, filename: '/path/to/file.jsx' };
+    const filename = './test/fixtures/async.js';
+    const source = fs.readFileSync(filename, 'utf8');
+    const event = { source, filename };
+    const spy = sinon.spy(transformFile, 'default');
     handlers.beforeParse(event);
-    expect(babel.transform).to.have.been.calledOnce;
-    expect(babel.transform).to.have.been.calledWith(source, sinon.match({
-      presets: ['es2015'],
-      plugins: ['transform-runtime'],
+    expect(spy).to.have.been.calledOnce;
+    expect(spy).to.have.been.calledWithExactly(source, sinon.match({
+      presets: ['@babel/env'],
     }));
   });
 
   it('should pass file name to babel transformer', () => {
-    const event = { source, filename: '/path/to/file.jsx' };
+    const filename = './test/fixtures/async.js';
+    const source = fs.readFileSync(filename, 'utf8');
+    const event = { source, filename };
+    const spy = sinon.spy(transformFile, 'default');
     handlers.beforeParse(event);
-    expect(babel.transform).to.have.been.calledOnce;
-    expect(babel.transform).to.have.been.calledWithExactly(source, sinon.match({
-      filename: event.filename,
+    expect(spy).to.have.been.calledOnce;
+    expect(spy).to.have.been.calledWithExactly(source, sinon.match({
+      filename,
     }));
   });
 });

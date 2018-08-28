@@ -1,62 +1,38 @@
-import { assign, includes, get, last, omit } from 'lodash';
-import { transform } from '@babel/core';
-import jsdocRegex from 'jsdoc-regex';
+import assign from 'lodash/assign';
+import get from 'lodash/get';
+import omit from 'lodash/omit';
 
-const defaults = { extensions: ['js'] };
+import preserveLineNumbers from './preserveLineNumbers';
+import shouldProcessFile from './shouldProcessFile';
+import stripWhitespace from './stripWhitespace';
+import transformFile from './transformFile';
 
-function shouldProcessFile(filename, { extensions }) {
-  return includes(extensions, last(filename.split('.')));
-}
-
-function countCharInRange(source, from, to, char) {
-  let cnt = 0;
-  for (let i = from; i < to; i += 1) {
-    if (source[i] === char) {
-      cnt += 1;
-    }
-  }
-  return cnt;
-}
-
-function stripWhitespace(text) {
-  return text.replace(/ /g, '');
-}
-
-function processFile(source, options, doclets) {
-  const regex = jsdocRegex();
-  let lastIndex = 0;
-  let linesCount = 1;
-  let match = regex.exec(source);
-  while (match !== null) {
-    const { index } = match;
-    linesCount += countCharInRange(source, lastIndex, index, '\n');
-    const key = stripWhitespace(match[0]);
-    // eslint-disable-next-line no-param-reassign
-    doclets[key] = linesCount;
-    lastIndex = index;
-    match = regex.exec(source);
-  }
-  return transform(source, omit(options, 'extensions')).code;
-}
+const defaultOptions = {
+  extensions: ['js'],
+};
 
 let doclets = {};
+
 // eslint-disable-next-line import/prefer-default-export
 export const handlers = {
   beforeParse: (event) => {
+    const { filename, source } = event;
+    const globalOptions = get(global, 'env.conf.babel');
+    const options = assign({}, defaultOptions, globalOptions, { filename });
+
     doclets = {};
-    const options = assign(defaults, {
-      filename: event.filename,
-    }, get(global, 'env.conf.babel'));
 
     if (shouldProcessFile(event.filename, options)) {
+      doclets = preserveLineNumbers(source);
       // eslint-disable-next-line no-param-reassign
-      event.source = processFile(event.source, options, doclets);
+      event.source = transformFile(source, omit(options, 'extensions'));
     }
   },
-  newDoclet: (e) => {
-    if (e) {
-      if (doclets[stripWhitespace(e.doclet.comment)]) {
-        e.doclet.meta.lineno = doclets[stripWhitespace(e.doclet.comment)];
+  newDoclet: (event) => {
+    if (event) {
+      if (doclets[stripWhitespace(event.doclet.comment)]) {
+        // eslint-disable-next-line no-param-reassign
+        event.doclet.meta.lineno = doclets[stripWhitespace(event.doclet.comment)];
       }
     }
   },
