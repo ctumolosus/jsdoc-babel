@@ -48,14 +48,14 @@ settings to your JSDoc configuration file:
 If Babel can resolve a `.babelrc` file in your project, it will be parsed as the
 transformer options.
 
-Alternatively, you can define [options](https://babeljs.io/docs/usage/api/#options)
+Alternatively, you can define [options](https://babeljs.io/docs/en/options)
 to be passed through Babel by adding them to your JSDoc configuration file:
 
 ```json
 {
     "plugins": ["node_modules/jsdoc-babel"],
     "babel": {
-        "presets": ["@babel/es2015"]
+        "presets": ["@babel/env"]
     }
 }
 ```
@@ -64,13 +64,13 @@ Note that options defined in the JSDoc configuration file will take precedence
 over those defined in your `.babelrc` file.
 
 If you would prefer to disable `.babelrc` file resolution, you can use the
-`babelrc` option:
+[`babelrc`](https://babeljs.io/docs/en/options#babelrc) option:
 
 ```json
 {
     "plugins": ["node_modules/jsdoc-babel"],
     "babel": {
-        "presets": ["@babel/es2015"],
+        "presets": ["@babel/env"],
         "babelrc": false
     }
 }
