@@ -6,7 +6,8 @@ describe('preserveLineNumbers', () => {
   it('should map comment blocks to line numbers in original source file', () => {
     const source = fs.readFileSync('./test/fixtures/react.js', 'utf8');
     const doclets = preserveLineNumbers(source);
-    expect(Object.values(doclets)).to.deep.equal([3, 8, 20, 29, 38]);
+    const values = Object.keys(doclets).map(key => doclets[key]);
+    expect(values).to.deep.equal([3, 8, 20, 29, 38]);
   });
 
   it('should remove whitespaces from comment blocks used as keys', () => {
