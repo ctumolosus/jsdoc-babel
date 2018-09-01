@@ -2,7 +2,7 @@
  * Downloads and processes data from specified URL
  * @param {String} url - Location for resource to be processed.
  */
-async function getProcessedData(url) {
+export async function getProcessedData(url) {
   let data;
 
   try {
@@ -13,5 +13,3 @@ async function getProcessedData(url) {
 
   return processDataInWorker(data);
 }
-
-export default getProcessedData;

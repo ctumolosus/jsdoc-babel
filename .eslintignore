@@ -1,0 +1,5 @@
+example/docs/*
+example/src/*
+example/node_modules/*
+lib/*
+test/fixtures/*
