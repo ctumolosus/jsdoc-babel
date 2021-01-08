@@ -1,3 +1,15 @@
+function downloadData() {
+  return Promise.resolve();
+}
+
+function downloadFallbackData() {
+  return Promise.resolve();
+}
+
+function processDataInWorker() {
+  return Promise.resolve();
+}
+
 /**
  * Downloads and processes data from specified URL
  * @param {String} url - Location for resource to be processed.

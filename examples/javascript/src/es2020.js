@@ -1,7 +1,7 @@
 const a = {
   b: {
     c: 100,
-  }
+  },
 };
 
 /**
@@ -9,3 +9,5 @@ const a = {
  * @type {number}
  */
 const d = a.b.c?.d;
+
+export default d;
