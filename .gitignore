@@ -23,4 +23,4 @@ Thumbs.db
 
 # Generated files #
 ###################
-example/docs
+examples/*/docs

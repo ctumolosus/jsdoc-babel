@@ -5,11 +5,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "clean:docs": "rm -rf docs",
+    "clean": "rm -rf docs",
     "docs": "jsdoc -c conf.js -d docs",
-    "predocs": "npm run clean:docs",
-    "preserve:docs": "npm run docs",
-    "serve:docs": "http-server -o -p 9000 -c-1 ./docs"
+    "predocs": "npm run clean",
+    "prestart": "npm run docs",
+    "start": "http-server -o -p 9000 -c-1 ./docs"
   },
   "author": "Christian Munoz",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "@babel/preset-react": "^7.10.4",
     "http-server": "^0.12.3",
     "jsdoc": "^3.6.5",
-    "jsdoc-babel": "file:.."
+    "jsdoc-babel": "file:../..",
+    "react": "^16.13.1"
   }
 }

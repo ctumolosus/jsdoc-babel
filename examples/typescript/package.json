@@ -1,0 +1,27 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "A couple annotated files to test jsdoc-babel plugin",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf docs",
+    "docs": "jsdoc -c conf.js -d docs",
+    "predocs": "npm run clean",
+    "prestart": "npm run docs",
+    "start": "http-server -o -p 9000 -c-1 ./docs"
+  },
+  "author": "Christian Munoz",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "7.12.7",
+    "http-server": "^0.12.3",
+    "jsdoc": "^3.6.5",
+    "jsdoc-babel": "file:../..",
+    "react": "^16.13.1"
+  }
+}
